@@ -3,7 +3,6 @@
 require_once 'Tiket.php';
 
 class TiketIMAX extends Tiket {
-    // Properti tambahan khusus kelas IMAX
     private $kacamata3dId;
     private $efekGerakFitur;
 
@@ -13,12 +12,19 @@ class TiketIMAX extends Tiket {
         $this->efekGerakFitur = $efekGerakFitur;
     }
 
+    // Fungsi tambahan untuk mendapatkan jenis kelas studio
+    public function getJenisStudio() {
+        return "Tiket IMAX";
+    }
+
     public function hitungTotalHarga() {
-        // Akan diimplementasikan di tahap Polimorfisme berikutnya
+        // Biasanya IMAX ada biaya tambahan, misalnya ditambah 25000 per kursi
+        $biayaTambahan = 25000;
+        return ($this->hargaDasarTiket + $biayaTambahan) * $this->jumlah_kursi;
     }
 
     public function tampilkanInfoFasilitas() {
-        // Akan diimplementasikan di tahap Polimorfisme berikutnya
+        return "Fasilitas IMAX: Layar Lebar 3D, Kacamata ID: " . $this->kacamata3dId . ", Efek Gerak: " . $this->efekGerakFitur;
     }
 }
 ?>

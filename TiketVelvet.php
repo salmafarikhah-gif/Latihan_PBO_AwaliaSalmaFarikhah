@@ -3,7 +3,6 @@
 require_once 'Tiket.php';
 
 class TiketVelvet extends Tiket {
-    // Properti tambahan khusus kelas Velvet
     private $bantalSelimutPack;
     private $layananButler;
 
@@ -13,12 +12,19 @@ class TiketVelvet extends Tiket {
         $this->layananButler = $layananButler;
     }
 
+    // Fungsi tambahan untuk mendapatkan jenis kelas studio
+    public function getJenisStudio() {
+        return "Tiket Velvet";
+    }
+
     public function hitungTotalHarga() {
-        // Akan diimplementasikan di tahap Polimorfisme berikutnya
+        // Biasanya Velvet kelas premium, misalnya harga dasar dikali 2 atau ada biaya tambahan besar
+        $biayaPremium = 50000;
+        return ($this->hargaDasarTiket + $biayaPremium) * $this->jumlah_kursi;
     }
 
     public function tampilkanInfoFasilitas() {
-        // Akan diimplementasikan di tahap Polimorfisme berikutnya
+        return "Fasilitas Velvet: Sofa Bed, Pack Bantal/Selimut: " . $this->bantalSelimutPack . ", Pelayanan Butler: " . $this->layananButler;
     }
 }
 ?>
