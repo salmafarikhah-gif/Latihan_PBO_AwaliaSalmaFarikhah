@@ -12,13 +12,14 @@ class TiketRegular extends Tiket {
         $this->lokasiBaris = $lokasiBaris;
     }
 
-    // Fungsi tambahan untuk mendapatkan jenis kelas studio
-    public function getJenisStudio() {
-        return "Tiket Reguler";
+    // FUNGSI TAMBAHAN: Mengambil data khusus tipe Reguler dari database
+    public function ambilDataTiket($koneksi) {
+        // Query SQL select * from dengan kondisi spesifik kelas reguler
+        $query = "SELECT * FROM tabel_tiket WHERE jenis_studio = 'Reguler'";
+        return mysqli_query($koneksi, $query);
     }
 
     public function hitungTotalHarga() {
-        // Mengembalikan harga dasar untuk kelas reguler
         return $this->hargaDasarTiket * $this->jumlah_kursi;
     }
 

@@ -12,13 +12,14 @@ class TiketVelvet extends Tiket {
         $this->layananButler = $layananButler;
     }
 
-    // Fungsi tambahan untuk mendapatkan jenis kelas studio
-    public function getJenisStudio() {
-        return "Tiket Velvet";
+    // FUNGSI TAMBAHAN: Mengambil data khusus tipe Velvet dari database
+    public function ambilDataTiket($koneksi) {
+        // Query SQL select * from dengan kondisi spesifik kelas Velvet
+        $query = "SELECT * FROM tabel_tiket WHERE jenis_studio = 'Velvet'";
+        return mysqli_query($koneksi, $query);
     }
 
     public function hitungTotalHarga() {
-        // Biasanya Velvet kelas premium, misalnya harga dasar dikali 2 atau ada biaya tambahan besar
         $biayaPremium = 50000;
         return ($this->hargaDasarTiket + $biayaPremium) * $this->jumlah_kursi;
     }

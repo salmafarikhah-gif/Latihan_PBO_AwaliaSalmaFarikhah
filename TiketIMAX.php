@@ -12,14 +12,15 @@ class TiketIMAX extends Tiket {
         $this->efekGerakFitur = $efekGerakFitur;
     }
 
-    // Fungsi tambahan untuk mendapatkan jenis kelas studio
-    public function getJenisStudio() {
-        return "Tiket IMAX";
+    // FUNGSI TAMBAHAN: Mengambil data khusus tipe IMAX dari database
+    public function ambilDataTiket($koneksi) {
+        // Query SQL select * from dengan kondisi spesifik kelas IMAX
+        $query = "SELECT * FROM tabel_tiket WHERE jenis_studio = 'IMAX'";
+        return mysqli_query($koneksi, $query);
     }
 
     public function hitungTotalHarga() {
-        // Biasanya IMAX ada biaya tambahan, misalnya ditambah 25000 per kursi
-        $biayaTambahan = 25000;
+        $biayaTambahan = 25000; 
         return ($this->hargaDasarTiket + $biayaTambahan) * $this->jumlah_kursi;
     }
 
