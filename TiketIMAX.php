@@ -20,8 +20,8 @@ class TiketIMAX extends Tiket {
     }
 
     public function hitungTotalHarga() {
-        $biayaTambahan = 25000; 
-        return ($this->hargaDasarTiket + $biayaTambahan) * $this->jumlah_kursi;
+        // Sesuai soal: (jumlah_kursi * hargaDasarTiket) + 35000
+        return ($this->jumlah_kursi * $this->hargaDasarTiket) + 35000;
     }
 
     public function tampilkanInfoFasilitas() {
